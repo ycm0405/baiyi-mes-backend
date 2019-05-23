@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.DictTypeDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.DictTypeDetail" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="CHAR" />
+    <result column="CODE" property="code" jdbcType="CHAR" />
+    <result column="DETAIL_ORDER" property="detailOrder" jdbcType="INTEGER" />
+    <result column="DICT_TYPE" property="dictType" jdbcType="INTEGER" />
+    <result column="IS_ENABLE" property="isEnable" jdbcType="BOOLEAN" />
+    <result column="GROUP_ID" property="groupId" jdbcType="INTEGER" />
+    <result column="REMARK" property="remark" jdbcType="CHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="CHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, NAME, CODE, DETAIL_ORDER, DICT_TYPE, IS_ENABLE, GROUP_ID, REMARK, STATUS, CREATE_TIME, 
+    MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dict_type_detail
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectBySearch" resultType="com.easestrategy.mes.model.DictTypeDetailModel" parameterType="map" >
+
+    select a.ID,a.NAME,a.CODE,a.DICT_TYPE,a.IS_ENABLE,a.REMARK,a.GROUP_ID,b.NAME as GROUP_NAME
+    from dict_type_detail as a
+    left join dict_type_detail as b
+    on a.ID = b.GROUP_ID
+
+
+    where
+    a.STATUS =1
+    AND a.DICT_TYPE =  #{dictTypeId}
+
+    <if test="name != null">
+      AND a.NAME like CONCAT(CONCAT('%',#{name}),'%')
+    </if>
+    <if test="groupId != 0">
+      AND a.GROUP_ID = #{groupId}
+    </if>
+
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dict_type_detail
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.DictTypeDetail" >
+    insert into dict_type_detail (ID, NAME, CODE, DETAIL_ORDER, 
+      DICT_TYPE, IS_ENABLE, GROUP_ID, 
+      REMARK, STATUS, CREATE_TIME, 
+      MODIFY_TIME)
+    values (#{id}, #{name}, #{code}, #{detailOrder},
+      #{dictType}, #{isEnable}, #{groupId},
+      #{remark}, #{status}, #{createTime},
+      #{modifyTime})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.DictTypeDetail" >
+    insert into dict_type_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="code != null" >
+        CODE,
+      </if>
+      <if test="detailOrder != null" >
+        DETAIL_ORDER,
+      </if>
+      <if test="dictType != null" >
+        DICT_TYPE,
+      </if>
+      <if test="isEnable != null" >
+        IS_ENABLE,
+      </if>
+      <if test="groupId != null" >
+        GROUP_ID,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=CHAR},
+      </if>
+      <if test="detailOrder != null" >
+        #{detailOrder,jdbcType=CHAR},
+      </if>
+      <if test="dictType != null" >
+        #{dictType,jdbcType=CHAR},
+      </if>
+      <if test="isEnable != null" >
+        #{isEnable,jdbcType=CHAR},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.DictTypeDetail" >
+    update dict_type_detail
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=CHAR},
+      </if>
+      <if test="code != null" >
+        CODE = #{code,jdbcType=CHAR},
+      </if>
+      <if test="detailOrder != null" >
+        DETAIL_ORDER = #{detailOrder,jdbcType=CHAR},
+      </if>
+      <if test="dictType != null" >
+        DICT_TYPE = #{dictType,jdbcType=CHAR},
+      </if>
+      <if test="isEnable != null" >
+        IS_ENABLE = #{isEnable,jdbcType=CHAR},
+      </if>
+      <if test="groupId != null" >
+        GROUP_ID = #{groupId,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.DictTypeDetail" >
+    update dict_type_detail
+    set NAME = #{name,jdbcType=CHAR},
+      CODE = #{code,jdbcType=CHAR},
+      DETAIL_ORDER = #{detailOrder,jdbcType=CHAR},
+      DICT_TYPE = #{dictType,jdbcType=CHAR},
+      IS_ENABLE = #{isEnable,jdbcType=CHAR},
+      GROUP_ID = #{groupId,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=CHAR},
+      STATUS = #{status,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=CHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=CHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

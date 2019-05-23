@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.NodeSiteConfMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.NodeSiteConf" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="NODE_ID" property="nodeId" jdbcType="INTEGER" />
+    <result column="PRODUCT_DETECT" property="productDetect" jdbcType="BIT" />
+    <result column="MATERIAL_DETECT" property="materialDetect" jdbcType="BIT" />
+    <result column="ENTRY_PRODUCT_TYPE" property="entryProductType" jdbcType="INTEGER" />
+    <result column="ENTRY_PRODUCT" property="entryProduct" jdbcType="INTEGER" />
+    <result column="OUT_PRODUCT_TYPE" property="outProductType" jdbcType="INTEGER" />
+    <result column="OU_PRODUCT" property="ouProduct" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, NODE_ID, PRODUCT_DETECT, MATERIAL_DETECT, ENTRY_PRODUCT_TYPE, ENTRY_PRODUCT, 
+    OUT_PRODUCT_TYPE, OU_PRODUCT, STATUS, CREATE_TIME, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from node_site_conf
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from node_site_conf
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.NodeSiteConf" >
+    insert into node_site_conf (ID, NODE_ID, PRODUCT_DETECT, 
+      MATERIAL_DETECT, ENTRY_PRODUCT_TYPE, ENTRY_PRODUCT, 
+      OUT_PRODUCT_TYPE, OU_PRODUCT, STATUS, 
+      CREATE_TIME, MODIFY_TIME)
+    values (#{id,jdbcType=INTEGER}, #{nodeId,jdbcType=INTEGER}, #{productDetect,jdbcType=BIT}, 
+      #{materialDetect,jdbcType=BIT}, #{entryProductType,jdbcType=INTEGER}, #{entryProduct,jdbcType=INTEGER}, 
+      #{outProductType,jdbcType=INTEGER}, #{ouProduct,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.NodeSiteConf" >
+    insert into node_site_conf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="nodeId != null" >
+        NODE_ID,
+      </if>
+      <if test="productDetect != null" >
+        PRODUCT_DETECT,
+      </if>
+      <if test="materialDetect != null" >
+        MATERIAL_DETECT,
+      </if>
+      <if test="entryProductType != null" >
+        ENTRY_PRODUCT_TYPE,
+      </if>
+      <if test="entryProduct != null" >
+        ENTRY_PRODUCT,
+      </if>
+      <if test="outProductType != null" >
+        OUT_PRODUCT_TYPE,
+      </if>
+      <if test="ouProduct != null" >
+        OU_PRODUCT,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="nodeId != null" >
+        #{nodeId,jdbcType=INTEGER},
+      </if>
+      <if test="productDetect != null" >
+        #{productDetect,jdbcType=BIT},
+      </if>
+      <if test="materialDetect != null" >
+        #{materialDetect,jdbcType=BIT},
+      </if>
+      <if test="entryProductType != null" >
+        #{entryProductType,jdbcType=INTEGER},
+      </if>
+      <if test="entryProduct != null" >
+        #{entryProduct,jdbcType=INTEGER},
+      </if>
+      <if test="outProductType != null" >
+        #{outProductType,jdbcType=INTEGER},
+      </if>
+      <if test="ouProduct != null" >
+        #{ouProduct,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.NodeSiteConf" >
+    update node_site_conf
+    <set >
+      <if test="nodeId != null" >
+        NODE_ID = #{nodeId,jdbcType=INTEGER},
+      </if>
+      <if test="productDetect != null" >
+        PRODUCT_DETECT = #{productDetect,jdbcType=BIT},
+      </if>
+      <if test="materialDetect != null" >
+        MATERIAL_DETECT = #{materialDetect,jdbcType=BIT},
+      </if>
+      <if test="entryProductType != null" >
+        ENTRY_PRODUCT_TYPE = #{entryProductType,jdbcType=INTEGER},
+      </if>
+      <if test="entryProduct != null" >
+        ENTRY_PRODUCT = #{entryProduct,jdbcType=INTEGER},
+      </if>
+      <if test="outProductType != null" >
+        OUT_PRODUCT_TYPE = #{outProductType,jdbcType=INTEGER},
+      </if>
+      <if test="ouProduct != null" >
+        OU_PRODUCT = #{ouProduct,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.NodeSiteConf" >
+    update node_site_conf
+    set NODE_ID = #{nodeId,jdbcType=INTEGER},
+      PRODUCT_DETECT = #{productDetect,jdbcType=BIT},
+      MATERIAL_DETECT = #{materialDetect,jdbcType=BIT},
+      ENTRY_PRODUCT_TYPE = #{entryProductType,jdbcType=INTEGER},
+      ENTRY_PRODUCT = #{entryProduct,jdbcType=INTEGER},
+      OUT_PRODUCT_TYPE = #{outProductType,jdbcType=INTEGER},
+      OU_PRODUCT = #{ouProduct,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

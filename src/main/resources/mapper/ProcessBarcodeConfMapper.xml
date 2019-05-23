@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.ProcessBarcodeConfMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.ProcessBarcodeConf" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="LINE_ID" property="lineId" jdbcType="INTEGER" />
+    <result column="IS_PASTE_BARCODE" property="isPasteBarcode" jdbcType="BIT" />
+    <result column="PASTE_BARCODE_TYPE" property="pasteBarcodeType" jdbcType="INTEGER" />
+    <result column="PROPERTY_KEY" property="propertyKey" jdbcType="VARCHAR" />
+    <result column="PROPERTY_VALUE" property="propertyValue" jdbcType="VARCHAR" />
+    <result column="PACKAGE_RULE" property="packageRule" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, LINE_ID, IS_PASTE_BARCODE, PASTE_BARCODE_TYPE, PROPERTY_KEY, PROPERTY_VALUE, 
+    PACKAGE_RULE, STATUS, CREATE_TIME, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from process_barcode_conf
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from process_barcode_conf
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.ProcessBarcodeConf" >
+    insert into process_barcode_conf (ID, LINE_ID, IS_PASTE_BARCODE, 
+      PASTE_BARCODE_TYPE, PROPERTY_KEY, PROPERTY_VALUE, 
+      PACKAGE_RULE, STATUS, CREATE_TIME, 
+      MODIFY_TIME)
+    values (#{id,jdbcType=INTEGER}, #{lineId,jdbcType=INTEGER}, #{isPasteBarcode,jdbcType=BIT}, 
+      #{pasteBarcodeType,jdbcType=INTEGER}, #{propertyKey,jdbcType=VARCHAR}, #{propertyValue,jdbcType=VARCHAR}, 
+      #{packageRule,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.ProcessBarcodeConf" >
+    insert into process_barcode_conf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="lineId != null" >
+        LINE_ID,
+      </if>
+      <if test="isPasteBarcode != null" >
+        IS_PASTE_BARCODE,
+      </if>
+      <if test="pasteBarcodeType != null" >
+        PASTE_BARCODE_TYPE,
+      </if>
+      <if test="propertyKey != null" >
+        PROPERTY_KEY,
+      </if>
+      <if test="propertyValue != null" >
+        PROPERTY_VALUE,
+      </if>
+      <if test="packageRule != null" >
+        PACKAGE_RULE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lineId != null" >
+        #{lineId,jdbcType=INTEGER},
+      </if>
+      <if test="isPasteBarcode != null" >
+        #{isPasteBarcode,jdbcType=BIT},
+      </if>
+      <if test="pasteBarcodeType != null" >
+        #{pasteBarcodeType,jdbcType=INTEGER},
+      </if>
+      <if test="propertyKey != null" >
+        #{propertyKey,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyValue != null" >
+        #{propertyValue,jdbcType=VARCHAR},
+      </if>
+      <if test="packageRule != null" >
+        #{packageRule,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.ProcessBarcodeConf" >
+    update process_barcode_conf
+    <set >
+      <if test="lineId != null" >
+        LINE_ID = #{lineId,jdbcType=INTEGER},
+      </if>
+      <if test="isPasteBarcode != null" >
+        IS_PASTE_BARCODE = #{isPasteBarcode,jdbcType=BIT},
+      </if>
+      <if test="pasteBarcodeType != null" >
+        PASTE_BARCODE_TYPE = #{pasteBarcodeType,jdbcType=INTEGER},
+      </if>
+      <if test="propertyKey != null" >
+        PROPERTY_KEY = #{propertyKey,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyValue != null" >
+        PROPERTY_VALUE = #{propertyValue,jdbcType=VARCHAR},
+      </if>
+      <if test="packageRule != null" >
+        PACKAGE_RULE = #{packageRule,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.ProcessBarcodeConf" >
+    update process_barcode_conf
+    set LINE_ID = #{lineId,jdbcType=INTEGER},
+      IS_PASTE_BARCODE = #{isPasteBarcode,jdbcType=BIT},
+      PASTE_BARCODE_TYPE = #{pasteBarcodeType,jdbcType=INTEGER},
+      PROPERTY_KEY = #{propertyKey,jdbcType=VARCHAR},
+      PROPERTY_VALUE = #{propertyValue,jdbcType=VARCHAR},
+      PACKAGE_RULE = #{packageRule,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

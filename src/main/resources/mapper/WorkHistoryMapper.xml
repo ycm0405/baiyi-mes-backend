@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.WorkHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.WorkHistory" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="EMPLOYEE_ID" property="employeeId" jdbcType="INTEGER" />
+    <result column="WORK_UNIT" property="workUnit" jdbcType="VARCHAR" />
+    <result column="JOB_TITLE" property="jobTitle" jdbcType="VARCHAR" />
+    <result column="JOB_FUNCTIONS" property="jobFunctions" jdbcType="VARCHAR" />
+    <result column="YEARS" property="years" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, EMPLOYEE_ID, WORK_UNIT, JOB_TITLE, JOB_FUNCTIONS, YEARS, STATUS, CREATE_TIME, 
+    MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from work_history
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from work_history
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.WorkHistory" >
+    insert into work_history (ID, EMPLOYEE_ID, WORK_UNIT, 
+      JOB_TITLE, JOB_FUNCTIONS, YEARS, 
+      STATUS, CREATE_TIME, MODIFY_TIME
+      )
+    values (#{id,jdbcType=INTEGER}, #{employeeId,jdbcType=INTEGER}, #{workUnit,jdbcType=VARCHAR}, 
+      #{jobTitle,jdbcType=VARCHAR}, #{jobFunctions,jdbcType=VARCHAR}, #{years,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.WorkHistory" >
+    insert into work_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="employeeId != null" >
+        EMPLOYEE_ID,
+      </if>
+      <if test="workUnit != null" >
+        WORK_UNIT,
+      </if>
+      <if test="jobTitle != null" >
+        JOB_TITLE,
+      </if>
+      <if test="jobFunctions != null" >
+        JOB_FUNCTIONS,
+      </if>
+      <if test="years != null" >
+        YEARS,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=INTEGER},
+      </if>
+      <if test="workUnit != null" >
+        #{workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTitle != null" >
+        #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="jobFunctions != null" >
+        #{jobFunctions,jdbcType=VARCHAR},
+      </if>
+      <if test="years != null" >
+        #{years,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.WorkHistory" >
+    update work_history
+    <set >
+      <if test="employeeId != null" >
+        EMPLOYEE_ID = #{employeeId,jdbcType=INTEGER},
+      </if>
+      <if test="workUnit != null" >
+        WORK_UNIT = #{workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTitle != null" >
+        JOB_TITLE = #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="jobFunctions != null" >
+        JOB_FUNCTIONS = #{jobFunctions,jdbcType=VARCHAR},
+      </if>
+      <if test="years != null" >
+        YEARS = #{years,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.WorkHistory" >
+    update work_history
+    set EMPLOYEE_ID = #{employeeId,jdbcType=INTEGER},
+      WORK_UNIT = #{workUnit,jdbcType=VARCHAR},
+      JOB_TITLE = #{jobTitle,jdbcType=VARCHAR},
+      JOB_FUNCTIONS = #{jobFunctions,jdbcType=VARCHAR},
+      YEARS = #{years,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

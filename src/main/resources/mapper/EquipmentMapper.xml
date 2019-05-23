@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.EquipmentMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.Equipment" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="BRAND" property="brand" jdbcType="VARCHAR" />
+    <result column="FACTORY_ID" property="factoryId" jdbcType="INTEGER" />
+    <result column="PURCHASE_DEPARTMENT" property="purchaseDepartment" jdbcType="VARCHAR" />
+    <result column="APPLY_DEPARTMENT" property="applyDepartment" jdbcType="VARCHAR" />
+    <result column="PURCHASE_DATE" property="purchaseDate" jdbcType="TIMESTAMP" />
+    <result column="ASSET_NUM" property="assetNum" jdbcType="VARCHAR" />
+    <result column="USE_DATE" property="useDate" jdbcType="TIMESTAMP" />
+    <result column="USE_PLACE" property="usePlace" jdbcType="VARCHAR" />
+    <result column="EQUIPMENT_STATUS" property="equipmentStatus" jdbcType="INTEGER" />
+    <result column="EMPLOYEE_ID" property="employeeId" jdbcType="INTEGER" />
+    <result column="CHECK_DATE" property="checkDate" jdbcType="TIMESTAMP" />
+    <result column="CHECK_FREQUENCY" property="checkFrequency" jdbcType="VARCHAR" />
+    <result column="CHECK_MODE" property="checkMode" jdbcType="VARCHAR" />
+    <result column="PURCHASE_PRICE" property="purchasePrice" jdbcType="VARCHAR" />
+    <result column="DEPRECIATION_METHOD" property="depreciationMethod" jdbcType="INTEGER" />
+    <result column="DEPRECIABLE_LIFE" property="depreciableLife" jdbcType="CHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, NAME, BRAND, FACTORY_ID, PURCHASE_DEPARTMENT, APPLY_DEPARTMENT, PURCHASE_DATE, 
+    ASSET_NUM, USE_DATE, USE_PLACE, EQUIPMENT_STATUS, EMPLOYEE_ID, CHECK_DATE, CHECK_FREQUENCY, 
+    CHECK_MODE, PURCHASE_PRICE, DEPRECIATION_METHOD, DEPRECIABLE_LIFE, STATUS, CREATE_TIME, 
+    MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from equipment
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from equipment
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.Equipment" >
+    insert into equipment (ID, NAME, BRAND, 
+      FACTORY_ID, PURCHASE_DEPARTMENT, APPLY_DEPARTMENT, 
+      PURCHASE_DATE, ASSET_NUM, USE_DATE, 
+      USE_PLACE, EQUIPMENT_STATUS, EMPLOYEE_ID, 
+      CHECK_DATE, CHECK_FREQUENCY, CHECK_MODE, 
+      PURCHASE_PRICE, DEPRECIATION_METHOD, DEPRECIABLE_LIFE, 
+      STATUS, CREATE_TIME, MODIFY_TIME
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{factoryId,jdbcType=INTEGER}, #{purchaseDepartment,jdbcType=VARCHAR}, #{applyDepartment,jdbcType=VARCHAR}, 
+      #{purchaseDate,jdbcType=TIMESTAMP}, #{assetNum,jdbcType=VARCHAR}, #{useDate,jdbcType=TIMESTAMP}, 
+      #{usePlace,jdbcType=VARCHAR}, #{equipmentStatus,jdbcType=INTEGER}, #{employeeId,jdbcType=INTEGER}, 
+      #{checkDate,jdbcType=TIMESTAMP}, #{checkFrequency,jdbcType=VARCHAR}, #{checkMode,jdbcType=VARCHAR}, 
+      #{purchasePrice,jdbcType=VARCHAR}, #{depreciationMethod,jdbcType=INTEGER}, #{depreciableLife,jdbcType=CHAR}, 
+      #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.Equipment" >
+    insert into equipment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="brand != null" >
+        BRAND,
+      </if>
+      <if test="factoryId != null" >
+        FACTORY_ID,
+      </if>
+      <if test="purchaseDepartment != null" >
+        PURCHASE_DEPARTMENT,
+      </if>
+      <if test="applyDepartment != null" >
+        APPLY_DEPARTMENT,
+      </if>
+      <if test="purchaseDate != null" >
+        PURCHASE_DATE,
+      </if>
+      <if test="assetNum != null" >
+        ASSET_NUM,
+      </if>
+      <if test="useDate != null" >
+        USE_DATE,
+      </if>
+      <if test="usePlace != null" >
+        USE_PLACE,
+      </if>
+      <if test="equipmentStatus != null" >
+        EQUIPMENT_STATUS,
+      </if>
+      <if test="employeeId != null" >
+        EMPLOYEE_ID,
+      </if>
+      <if test="checkDate != null" >
+        CHECK_DATE,
+      </if>
+      <if test="checkFrequency != null" >
+        CHECK_FREQUENCY,
+      </if>
+      <if test="checkMode != null" >
+        CHECK_MODE,
+      </if>
+      <if test="purchasePrice != null" >
+        PURCHASE_PRICE,
+      </if>
+      <if test="depreciationMethod != null" >
+        DEPRECIATION_METHOD,
+      </if>
+      <if test="depreciableLife != null" >
+        DEPRECIABLE_LIFE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseDepartment != null" >
+        #{purchaseDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDepartment != null" >
+        #{applyDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseDate != null" >
+        #{purchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="assetNum != null" >
+        #{assetNum,jdbcType=VARCHAR},
+      </if>
+      <if test="useDate != null" >
+        #{useDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usePlace != null" >
+        #{usePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentStatus != null" >
+        #{equipmentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=INTEGER},
+      </if>
+      <if test="checkDate != null" >
+        #{checkDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkFrequency != null" >
+        #{checkFrequency,jdbcType=VARCHAR},
+      </if>
+      <if test="checkMode != null" >
+        #{checkMode,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePrice != null" >
+        #{purchasePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="depreciationMethod != null" >
+        #{depreciationMethod,jdbcType=INTEGER},
+      </if>
+      <if test="depreciableLife != null" >
+        #{depreciableLife,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.Equipment" >
+    update equipment
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        BRAND = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryId != null" >
+        FACTORY_ID = #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseDepartment != null" >
+        PURCHASE_DEPARTMENT = #{purchaseDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDepartment != null" >
+        APPLY_DEPARTMENT = #{applyDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseDate != null" >
+        PURCHASE_DATE = #{purchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="assetNum != null" >
+        ASSET_NUM = #{assetNum,jdbcType=VARCHAR},
+      </if>
+      <if test="useDate != null" >
+        USE_DATE = #{useDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usePlace != null" >
+        USE_PLACE = #{usePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentStatus != null" >
+        EQUIPMENT_STATUS = #{equipmentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="employeeId != null" >
+        EMPLOYEE_ID = #{employeeId,jdbcType=INTEGER},
+      </if>
+      <if test="checkDate != null" >
+        CHECK_DATE = #{checkDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkFrequency != null" >
+        CHECK_FREQUENCY = #{checkFrequency,jdbcType=VARCHAR},
+      </if>
+      <if test="checkMode != null" >
+        CHECK_MODE = #{checkMode,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePrice != null" >
+        PURCHASE_PRICE = #{purchasePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="depreciationMethod != null" >
+        DEPRECIATION_METHOD = #{depreciationMethod,jdbcType=INTEGER},
+      </if>
+      <if test="depreciableLife != null" >
+        DEPRECIABLE_LIFE = #{depreciableLife,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.Equipment" >
+    update equipment
+    set NAME = #{name,jdbcType=VARCHAR},
+      BRAND = #{brand,jdbcType=VARCHAR},
+      FACTORY_ID = #{factoryId,jdbcType=INTEGER},
+      PURCHASE_DEPARTMENT = #{purchaseDepartment,jdbcType=VARCHAR},
+      APPLY_DEPARTMENT = #{applyDepartment,jdbcType=VARCHAR},
+      PURCHASE_DATE = #{purchaseDate,jdbcType=TIMESTAMP},
+      ASSET_NUM = #{assetNum,jdbcType=VARCHAR},
+      USE_DATE = #{useDate,jdbcType=TIMESTAMP},
+      USE_PLACE = #{usePlace,jdbcType=VARCHAR},
+      EQUIPMENT_STATUS = #{equipmentStatus,jdbcType=INTEGER},
+      EMPLOYEE_ID = #{employeeId,jdbcType=INTEGER},
+      CHECK_DATE = #{checkDate,jdbcType=TIMESTAMP},
+      CHECK_FREQUENCY = #{checkFrequency,jdbcType=VARCHAR},
+      CHECK_MODE = #{checkMode,jdbcType=VARCHAR},
+      PURCHASE_PRICE = #{purchasePrice,jdbcType=VARCHAR},
+      DEPRECIATION_METHOD = #{depreciationMethod,jdbcType=INTEGER},
+      DEPRECIABLE_LIFE = #{depreciableLife,jdbcType=CHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

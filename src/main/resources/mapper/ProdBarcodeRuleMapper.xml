@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.ProdBarcodeRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.ProdBarcodeRule" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="RULE_ID" property="ruleId" jdbcType="INTEGER" />
+    <result column="PROPERTY_KEY" property="propertyKey" jdbcType="VARCHAR" />
+    <result column="PROPERTY_VALUE" property="propertyValue" jdbcType="VARCHAR" />
+    <result column="RULE_ORDER" property="ruleOrder" jdbcType="INTEGER" />
+    <result column="FLAG" property="flag" jdbcType="INTEGER" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, RULE_ID, PROPERTY_KEY, PROPERTY_VALUE, RULE_ORDER, FLAG, DESCRIPTION, STATUS, 
+    CREATE_TIME, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from prod_barcode_rule
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from prod_barcode_rule
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.ProdBarcodeRule" >
+    insert into prod_barcode_rule (ID, RULE_ID, PROPERTY_KEY, 
+      PROPERTY_VALUE, RULE_ORDER, FLAG, 
+      DESCRIPTION, STATUS, CREATE_TIME, 
+      MODIFY_TIME)
+    values (#{id,jdbcType=INTEGER}, #{ruleId,jdbcType=INTEGER}, #{propertyKey,jdbcType=VARCHAR}, 
+      #{propertyValue,jdbcType=VARCHAR}, #{ruleOrder,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.ProdBarcodeRule" >
+    insert into prod_barcode_rule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="ruleId != null" >
+        RULE_ID,
+      </if>
+      <if test="propertyKey != null" >
+        PROPERTY_KEY,
+      </if>
+      <if test="propertyValue != null" >
+        PROPERTY_VALUE,
+      </if>
+      <if test="ruleOrder != null" >
+        RULE_ORDER,
+      </if>
+      <if test="flag != null" >
+        FLAG,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ruleId != null" >
+        #{ruleId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyKey != null" >
+        #{propertyKey,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyValue != null" >
+        #{propertyValue,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleOrder != null" >
+        #{ruleOrder,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.ProdBarcodeRule" >
+    update prod_barcode_rule
+    <set >
+      <if test="ruleId != null" >
+        RULE_ID = #{ruleId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyKey != null" >
+        PROPERTY_KEY = #{propertyKey,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyValue != null" >
+        PROPERTY_VALUE = #{propertyValue,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleOrder != null" >
+        RULE_ORDER = #{ruleOrder,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        FLAG = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.ProdBarcodeRule" >
+    update prod_barcode_rule
+    set RULE_ID = #{ruleId,jdbcType=INTEGER},
+      PROPERTY_KEY = #{propertyKey,jdbcType=VARCHAR},
+      PROPERTY_VALUE = #{propertyValue,jdbcType=VARCHAR},
+      RULE_ORDER = #{ruleOrder,jdbcType=INTEGER},
+      FLAG = #{flag,jdbcType=INTEGER},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

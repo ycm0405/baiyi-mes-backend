@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.MateBarcodeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.MateBarcodeInfo" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="SUPPLIER_PACKAGE" property="supplierPackage" jdbcType="INTEGER" />
+    <result column="SUPPLIER_BARCODE" property="supplierBarcode" jdbcType="VARCHAR" />
+    <result column="BARCODE_RULE_ID" property="barcodeRuleId" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SUPPLIER_PACKAGE, SUPPLIER_BARCODE, BARCODE_RULE_ID, STATUS, CREATE_TIME, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mate_barcode_info
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mate_barcode_info
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.MateBarcodeInfo" >
+    insert into mate_barcode_info (ID, SUPPLIER_PACKAGE, SUPPLIER_BARCODE, 
+      BARCODE_RULE_ID, STATUS, CREATE_TIME, 
+      MODIFY_TIME)
+    values (#{id,jdbcType=INTEGER}, #{supplierPackage,jdbcType=INTEGER}, #{supplierBarcode,jdbcType=VARCHAR}, 
+      #{barcodeRuleId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.MateBarcodeInfo" >
+    insert into mate_barcode_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="supplierPackage != null" >
+        SUPPLIER_PACKAGE,
+      </if>
+      <if test="supplierBarcode != null" >
+        SUPPLIER_BARCODE,
+      </if>
+      <if test="barcodeRuleId != null" >
+        BARCODE_RULE_ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="supplierPackage != null" >
+        #{supplierPackage,jdbcType=INTEGER},
+      </if>
+      <if test="supplierBarcode != null" >
+        #{supplierBarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="barcodeRuleId != null" >
+        #{barcodeRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.MateBarcodeInfo" >
+    update mate_barcode_info
+    <set >
+      <if test="supplierPackage != null" >
+        SUPPLIER_PACKAGE = #{supplierPackage,jdbcType=INTEGER},
+      </if>
+      <if test="supplierBarcode != null" >
+        SUPPLIER_BARCODE = #{supplierBarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="barcodeRuleId != null" >
+        BARCODE_RULE_ID = #{barcodeRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.MateBarcodeInfo" >
+    update mate_barcode_info
+    set SUPPLIER_PACKAGE = #{supplierPackage,jdbcType=INTEGER},
+      SUPPLIER_BARCODE = #{supplierBarcode,jdbcType=VARCHAR},
+      BARCODE_RULE_ID = #{barcodeRuleId,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

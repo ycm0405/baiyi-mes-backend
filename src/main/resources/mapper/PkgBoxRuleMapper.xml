@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.PkgBoxRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.PkgBoxRule" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PACKAGE_NUM" property="packageNum" jdbcType="VARCHAR" />
+    <result column="SMALL_BAG_NUM" property="smallBagNum" jdbcType="INTEGER" />
+    <result column="MIDDLE_BAG_NUM" property="middleBagNum" jdbcType="INTEGER" />
+    <result column="BIG_BAG_NUM" property="bigBagNum" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PACKAGE_NUM, SMALL_BAG_NUM, MIDDLE_BAG_NUM, BIG_BAG_NUM, STATUS, CREATE_TIME, 
+    MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pkg_box_rule
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pkg_box_rule
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.PkgBoxRule" >
+    insert into pkg_box_rule (ID, PACKAGE_NUM, SMALL_BAG_NUM, 
+      MIDDLE_BAG_NUM, BIG_BAG_NUM, STATUS, 
+      CREATE_TIME, MODIFY_TIME)
+    values (#{id,jdbcType=INTEGER}, #{packageNum,jdbcType=VARCHAR}, #{smallBagNum,jdbcType=INTEGER}, 
+      #{middleBagNum,jdbcType=INTEGER}, #{bigBagNum,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.PkgBoxRule" >
+    insert into pkg_box_rule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="packageNum != null" >
+        PACKAGE_NUM,
+      </if>
+      <if test="smallBagNum != null" >
+        SMALL_BAG_NUM,
+      </if>
+      <if test="middleBagNum != null" >
+        MIDDLE_BAG_NUM,
+      </if>
+      <if test="bigBagNum != null" >
+        BIG_BAG_NUM,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="packageNum != null" >
+        #{packageNum,jdbcType=VARCHAR},
+      </if>
+      <if test="smallBagNum != null" >
+        #{smallBagNum,jdbcType=INTEGER},
+      </if>
+      <if test="middleBagNum != null" >
+        #{middleBagNum,jdbcType=INTEGER},
+      </if>
+      <if test="bigBagNum != null" >
+        #{bigBagNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.PkgBoxRule" >
+    update pkg_box_rule
+    <set >
+      <if test="packageNum != null" >
+        PACKAGE_NUM = #{packageNum,jdbcType=VARCHAR},
+      </if>
+      <if test="smallBagNum != null" >
+        SMALL_BAG_NUM = #{smallBagNum,jdbcType=INTEGER},
+      </if>
+      <if test="middleBagNum != null" >
+        MIDDLE_BAG_NUM = #{middleBagNum,jdbcType=INTEGER},
+      </if>
+      <if test="bigBagNum != null" >
+        BIG_BAG_NUM = #{bigBagNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.PkgBoxRule" >
+    update pkg_box_rule
+    set PACKAGE_NUM = #{packageNum,jdbcType=VARCHAR},
+      SMALL_BAG_NUM = #{smallBagNum,jdbcType=INTEGER},
+      MIDDLE_BAG_NUM = #{middleBagNum,jdbcType=INTEGER},
+      BIG_BAG_NUM = #{bigBagNum,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

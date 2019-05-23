@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.MaterialsMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.Materials" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="INTEGER" />
+    <result column="MODEL" property="model" jdbcType="VARCHAR" />
+    <result column="CATEGORY" property="category" jdbcType="VARCHAR" />
+    <result column="COMPANY_MATERIALS_NUM" property="companyMaterialsNum" jdbcType="VARCHAR" />
+    <result column="FACTORY_ID" property="factoryId" jdbcType="INTEGER" />
+    <result column="BRAND" property="brand" jdbcType="VARCHAR" />
+    <result column="SUPPLIER_MATERIALS_NUM" property="supplierMaterialsNum" jdbcType="VARCHAR" />
+    <result column="BATCH_NUM" property="batchNum" jdbcType="VARCHAR" />
+    <result column="SUPPLIER" property="supplier" jdbcType="VARCHAR" />
+    <result column="INVENTORY_POSITION" property="inventoryPosition" jdbcType="INTEGER" />
+    <result column="MEASURE_UNIT" property="measureUnit" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, NAME, MODEL, CATEGORY, COMPANY_MATERIALS_NUM, FACTORY_ID, BRAND, SUPPLIER_MATERIALS_NUM, 
+    BATCH_NUM, SUPPLIER, INVENTORY_POSITION, MEASURE_UNIT, STATUS, CREATE_TIME, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from materials
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from materials
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.Materials" >
+    insert into materials (ID, NAME, MODEL, 
+      CATEGORY, COMPANY_MATERIALS_NUM, FACTORY_ID, 
+      BRAND, SUPPLIER_MATERIALS_NUM, BATCH_NUM, 
+      SUPPLIER, INVENTORY_POSITION, MEASURE_UNIT, 
+      STATUS, CREATE_TIME, MODIFY_TIME
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=INTEGER}, #{model,jdbcType=VARCHAR}, 
+      #{category,jdbcType=VARCHAR}, #{companyMaterialsNum,jdbcType=VARCHAR}, #{factoryId,jdbcType=INTEGER}, 
+      #{brand,jdbcType=VARCHAR}, #{supplierMaterialsNum,jdbcType=VARCHAR}, #{batchNum,jdbcType=VARCHAR}, 
+      #{supplier,jdbcType=VARCHAR}, #{inventoryPosition,jdbcType=INTEGER}, #{measureUnit,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.Materials" >
+    insert into materials
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="model != null" >
+        MODEL,
+      </if>
+      <if test="category != null" >
+        CATEGORY,
+      </if>
+      <if test="companyMaterialsNum != null" >
+        COMPANY_MATERIALS_NUM,
+      </if>
+      <if test="factoryId != null" >
+        FACTORY_ID,
+      </if>
+      <if test="brand != null" >
+        BRAND,
+      </if>
+      <if test="supplierMaterialsNum != null" >
+        SUPPLIER_MATERIALS_NUM,
+      </if>
+      <if test="batchNum != null" >
+        BATCH_NUM,
+      </if>
+      <if test="supplier != null" >
+        SUPPLIER,
+      </if>
+      <if test="inventoryPosition != null" >
+        INVENTORY_POSITION,
+      </if>
+      <if test="measureUnit != null" >
+        MEASURE_UNIT,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=INTEGER},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="companyMaterialsNum != null" >
+        #{companyMaterialsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierMaterialsNum != null" >
+        #{supplierMaterialsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNum != null" >
+        #{batchNum,jdbcType=VARCHAR},
+      </if>
+      <if test="supplier != null" >
+        #{supplier,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryPosition != null" >
+        #{inventoryPosition,jdbcType=INTEGER},
+      </if>
+      <if test="measureUnit != null" >
+        #{measureUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.Materials" >
+    update materials
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=INTEGER},
+      </if>
+      <if test="model != null" >
+        MODEL = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        CATEGORY = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="companyMaterialsNum != null" >
+        COMPANY_MATERIALS_NUM = #{companyMaterialsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryId != null" >
+        FACTORY_ID = #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="brand != null" >
+        BRAND = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierMaterialsNum != null" >
+        SUPPLIER_MATERIALS_NUM = #{supplierMaterialsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNum != null" >
+        BATCH_NUM = #{batchNum,jdbcType=VARCHAR},
+      </if>
+      <if test="supplier != null" >
+        SUPPLIER = #{supplier,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryPosition != null" >
+        INVENTORY_POSITION = #{inventoryPosition,jdbcType=INTEGER},
+      </if>
+      <if test="measureUnit != null" >
+        MEASURE_UNIT = #{measureUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.Materials" >
+    update materials
+    set NAME = #{name,jdbcType=INTEGER},
+      MODEL = #{model,jdbcType=VARCHAR},
+      CATEGORY = #{category,jdbcType=VARCHAR},
+      COMPANY_MATERIALS_NUM = #{companyMaterialsNum,jdbcType=VARCHAR},
+      FACTORY_ID = #{factoryId,jdbcType=INTEGER},
+      BRAND = #{brand,jdbcType=VARCHAR},
+      SUPPLIER_MATERIALS_NUM = #{supplierMaterialsNum,jdbcType=VARCHAR},
+      BATCH_NUM = #{batchNum,jdbcType=VARCHAR},
+      SUPPLIER = #{supplier,jdbcType=VARCHAR},
+      INVENTORY_POSITION = #{inventoryPosition,jdbcType=INTEGER},
+      MEASURE_UNIT = #{measureUnit,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

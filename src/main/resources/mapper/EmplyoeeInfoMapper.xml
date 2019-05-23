@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.EmplyoeeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.EmplyoeeInfo" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="INTEGER" />
+    <result column="AGE" property="age" jdbcType="INTEGER" />
+    <result column="BIRTH_PLACE" property="birthPlace" jdbcType="VARCHAR" />
+    <result column="HOME_ADDR" property="homeAddr" jdbcType="VARCHAR" />
+    <result column="BIRTH_DATE" property="birthDate" jdbcType="TIMESTAMP" />
+    <result column="NATION" property="nation" jdbcType="VARCHAR" />
+    <result column="BLOOD_GROUP" property="bloodGroup" jdbcType="INTEGER" />
+    <result column="MARITAL_STATUS" property="maritalStatus" jdbcType="INTEGER" />
+    <result column="POLITICS_STATUS" property="politicsStatus" jdbcType="INTEGER" />
+    <result column="IDNUM" property="idnum" jdbcType="VARCHAR" />
+    <result column="TELE_PHONE" property="telePhone" jdbcType="VARCHAR" />
+    <result column="PIC_PATH" property="picPath" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, NAME, SEX, AGE, BIRTH_PLACE, HOME_ADDR, BIRTH_DATE, NATION, BLOOD_GROUP, MARITAL_STATUS, 
+    POLITICS_STATUS, IDNUM, TELE_PHONE, PIC_PATH, STATUS, CREATE_TIME, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from emplyoee_info
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from emplyoee_info
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.EmplyoeeInfo" >
+    insert into emplyoee_info (ID, NAME, SEX, 
+      AGE, BIRTH_PLACE, HOME_ADDR, 
+      BIRTH_DATE, NATION, BLOOD_GROUP, 
+      MARITAL_STATUS, POLITICS_STATUS, IDNUM, 
+      TELE_PHONE, PIC_PATH, STATUS, 
+      CREATE_TIME, MODIFY_TIME)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{age,jdbcType=INTEGER}, #{birthPlace,jdbcType=VARCHAR}, #{homeAddr,jdbcType=VARCHAR}, 
+      #{birthDate,jdbcType=TIMESTAMP}, #{nation,jdbcType=VARCHAR}, #{bloodGroup,jdbcType=INTEGER}, 
+      #{maritalStatus,jdbcType=INTEGER}, #{politicsStatus,jdbcType=INTEGER}, #{idnum,jdbcType=VARCHAR}, 
+      #{telePhone,jdbcType=VARCHAR}, #{picPath,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.EmplyoeeInfo" >
+    insert into emplyoee_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="age != null" >
+        AGE,
+      </if>
+      <if test="birthPlace != null" >
+        BIRTH_PLACE,
+      </if>
+      <if test="homeAddr != null" >
+        HOME_ADDR,
+      </if>
+      <if test="birthDate != null" >
+        BIRTH_DATE,
+      </if>
+      <if test="nation != null" >
+        NATION,
+      </if>
+      <if test="bloodGroup != null" >
+        BLOOD_GROUP,
+      </if>
+      <if test="maritalStatus != null" >
+        MARITAL_STATUS,
+      </if>
+      <if test="politicsStatus != null" >
+        POLITICS_STATUS,
+      </if>
+      <if test="idnum != null" >
+        IDNUM,
+      </if>
+      <if test="telePhone != null" >
+        TELE_PHONE,
+      </if>
+      <if test="picPath != null" >
+        PIC_PATH,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="birthPlace != null" >
+        #{birthPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddr != null" >
+        #{homeAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null" >
+        #{birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodGroup != null" >
+        #{bloodGroup,jdbcType=INTEGER},
+      </if>
+      <if test="maritalStatus != null" >
+        #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="politicsStatus != null" >
+        #{politicsStatus,jdbcType=INTEGER},
+      </if>
+      <if test="idnum != null" >
+        #{idnum,jdbcType=VARCHAR},
+      </if>
+      <if test="telePhone != null" >
+        #{telePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="picPath != null" >
+        #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.EmplyoeeInfo" >
+    update emplyoee_info
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        AGE = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="birthPlace != null" >
+        BIRTH_PLACE = #{birthPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddr != null" >
+        HOME_ADDR = #{homeAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null" >
+        BIRTH_DATE = #{birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nation != null" >
+        NATION = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodGroup != null" >
+        BLOOD_GROUP = #{bloodGroup,jdbcType=INTEGER},
+      </if>
+      <if test="maritalStatus != null" >
+        MARITAL_STATUS = #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="politicsStatus != null" >
+        POLITICS_STATUS = #{politicsStatus,jdbcType=INTEGER},
+      </if>
+      <if test="idnum != null" >
+        IDNUM = #{idnum,jdbcType=VARCHAR},
+      </if>
+      <if test="telePhone != null" >
+        TELE_PHONE = #{telePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="picPath != null" >
+        PIC_PATH = #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.EmplyoeeInfo" >
+    update emplyoee_info
+    set NAME = #{name,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=INTEGER},
+      AGE = #{age,jdbcType=INTEGER},
+      BIRTH_PLACE = #{birthPlace,jdbcType=VARCHAR},
+      HOME_ADDR = #{homeAddr,jdbcType=VARCHAR},
+      BIRTH_DATE = #{birthDate,jdbcType=TIMESTAMP},
+      NATION = #{nation,jdbcType=VARCHAR},
+      BLOOD_GROUP = #{bloodGroup,jdbcType=INTEGER},
+      MARITAL_STATUS = #{maritalStatus,jdbcType=INTEGER},
+      POLITICS_STATUS = #{politicsStatus,jdbcType=INTEGER},
+      IDNUM = #{idnum,jdbcType=VARCHAR},
+      TELE_PHONE = #{telePhone,jdbcType=VARCHAR},
+      PIC_PATH = #{picPath,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

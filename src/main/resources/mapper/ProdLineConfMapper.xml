@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.ProdLineConfMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.ProdLineConf" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="WORK_ORDER_ID" property="workOrderId" jdbcType="INTEGER" />
+    <result column="FACTORY_ID" property="factoryId" jdbcType="INTEGER" />
+    <result column="PRODUCE_LINE_ID" property="produceLineId" jdbcType="INTEGER" />
+    <result column="PRODUCT_NUM" property="productNum" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, WORK_ORDER_ID, FACTORY_ID, PRODUCE_LINE_ID, PRODUCT_NUM, STATUS, CREATE_TIME, 
+    MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from prod_line_conf
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from prod_line_conf
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.ProdLineConf" >
+    insert into prod_line_conf (ID, WORK_ORDER_ID, FACTORY_ID, 
+      PRODUCE_LINE_ID, PRODUCT_NUM, STATUS, 
+      CREATE_TIME, MODIFY_TIME)
+    values (#{id,jdbcType=INTEGER}, #{workOrderId,jdbcType=INTEGER}, #{factoryId,jdbcType=INTEGER}, 
+      #{produceLineId,jdbcType=INTEGER}, #{productNum,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.ProdLineConf" >
+    insert into prod_line_conf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="workOrderId != null" >
+        WORK_ORDER_ID,
+      </if>
+      <if test="factoryId != null" >
+        FACTORY_ID,
+      </if>
+      <if test="produceLineId != null" >
+        PRODUCE_LINE_ID,
+      </if>
+      <if test="productNum != null" >
+        PRODUCT_NUM,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="workOrderId != null" >
+        #{workOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="produceLineId != null" >
+        #{produceLineId,jdbcType=INTEGER},
+      </if>
+      <if test="productNum != null" >
+        #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.ProdLineConf" >
+    update prod_line_conf
+    <set >
+      <if test="workOrderId != null" >
+        WORK_ORDER_ID = #{workOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        FACTORY_ID = #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="produceLineId != null" >
+        PRODUCE_LINE_ID = #{produceLineId,jdbcType=INTEGER},
+      </if>
+      <if test="productNum != null" >
+        PRODUCT_NUM = #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.ProdLineConf" >
+    update prod_line_conf
+    set WORK_ORDER_ID = #{workOrderId,jdbcType=INTEGER},
+      FACTORY_ID = #{factoryId,jdbcType=INTEGER},
+      PRODUCE_LINE_ID = #{produceLineId,jdbcType=INTEGER},
+      PRODUCT_NUM = #{productNum,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

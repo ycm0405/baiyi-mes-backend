@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.WorkOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.WorkOrder" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="WORK_ORDER_NUM" property="workOrderNum" jdbcType="VARCHAR" />
+    <result column="WORK_ORDER_DATE" property="workOrderDate" jdbcType="TIMESTAMP" />
+    <result column="FACTORY_ID" property="factoryId" jdbcType="INTEGER" />
+    <result column="PRODUCT_MODEL" property="productModel" jdbcType="VARCHAR" />
+    <result column="PRODUCT_MATERIALS_NUM" property="productMaterialsNum" jdbcType="VARCHAR" />
+    <result column="PRODUCT_VERSION" property="productVersion" jdbcType="VARCHAR" />
+    <result column="WORK_FLOW_ID" property="workFlowId" jdbcType="INTEGER" />
+    <result column="PRODUCT_START_DATE" property="productStartDate" jdbcType="TIMESTAMP" />
+    <result column="PRODUCT_END_DATE" property="productEndDate" jdbcType="TIMESTAMP" />
+    <result column="PRODUCT_NUM" property="productNum" jdbcType="INTEGER" />
+    <result column="PROCESS_NODE" property="processNode" jdbcType="INTEGER" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, WORK_ORDER_NUM, WORK_ORDER_DATE, FACTORY_ID, PRODUCT_MODEL, PRODUCT_MATERIALS_NUM, 
+    PRODUCT_VERSION, WORK_FLOW_ID, PRODUCT_START_DATE, PRODUCT_END_DATE, PRODUCT_NUM, 
+    PROCESS_NODE, REMARK, STATUS, CREATE_TIME, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from work_order
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from work_order
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.WorkOrder" >
+    insert into work_order (ID, WORK_ORDER_NUM, WORK_ORDER_DATE, 
+      FACTORY_ID, PRODUCT_MODEL, PRODUCT_MATERIALS_NUM, 
+      PRODUCT_VERSION, WORK_FLOW_ID, PRODUCT_START_DATE, 
+      PRODUCT_END_DATE, PRODUCT_NUM, PROCESS_NODE, 
+      REMARK, STATUS, CREATE_TIME, 
+      MODIFY_TIME)
+    values (#{id,jdbcType=INTEGER}, #{workOrderNum,jdbcType=VARCHAR}, #{workOrderDate,jdbcType=TIMESTAMP}, 
+      #{factoryId,jdbcType=INTEGER}, #{productModel,jdbcType=VARCHAR}, #{productMaterialsNum,jdbcType=VARCHAR}, 
+      #{productVersion,jdbcType=VARCHAR}, #{workFlowId,jdbcType=INTEGER}, #{productStartDate,jdbcType=TIMESTAMP}, 
+      #{productEndDate,jdbcType=TIMESTAMP}, #{productNum,jdbcType=INTEGER}, #{processNode,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.WorkOrder" >
+    insert into work_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="workOrderNum != null" >
+        WORK_ORDER_NUM,
+      </if>
+      <if test="workOrderDate != null" >
+        WORK_ORDER_DATE,
+      </if>
+      <if test="factoryId != null" >
+        FACTORY_ID,
+      </if>
+      <if test="productModel != null" >
+        PRODUCT_MODEL,
+      </if>
+      <if test="productMaterialsNum != null" >
+        PRODUCT_MATERIALS_NUM,
+      </if>
+      <if test="productVersion != null" >
+        PRODUCT_VERSION,
+      </if>
+      <if test="workFlowId != null" >
+        WORK_FLOW_ID,
+      </if>
+      <if test="productStartDate != null" >
+        PRODUCT_START_DATE,
+      </if>
+      <if test="productEndDate != null" >
+        PRODUCT_END_DATE,
+      </if>
+      <if test="productNum != null" >
+        PRODUCT_NUM,
+      </if>
+      <if test="processNode != null" >
+        PROCESS_NODE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="workOrderNum != null" >
+        #{workOrderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="workOrderDate != null" >
+        #{workOrderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="productModel != null" >
+        #{productModel,jdbcType=VARCHAR},
+      </if>
+      <if test="productMaterialsNum != null" >
+        #{productMaterialsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="productVersion != null" >
+        #{productVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="workFlowId != null" >
+        #{workFlowId,jdbcType=INTEGER},
+      </if>
+      <if test="productStartDate != null" >
+        #{productStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productEndDate != null" >
+        #{productEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productNum != null" >
+        #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="processNode != null" >
+        #{processNode,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.WorkOrder" >
+    update work_order
+    <set >
+      <if test="workOrderNum != null" >
+        WORK_ORDER_NUM = #{workOrderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="workOrderDate != null" >
+        WORK_ORDER_DATE = #{workOrderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="factoryId != null" >
+        FACTORY_ID = #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="productModel != null" >
+        PRODUCT_MODEL = #{productModel,jdbcType=VARCHAR},
+      </if>
+      <if test="productMaterialsNum != null" >
+        PRODUCT_MATERIALS_NUM = #{productMaterialsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="productVersion != null" >
+        PRODUCT_VERSION = #{productVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="workFlowId != null" >
+        WORK_FLOW_ID = #{workFlowId,jdbcType=INTEGER},
+      </if>
+      <if test="productStartDate != null" >
+        PRODUCT_START_DATE = #{productStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productEndDate != null" >
+        PRODUCT_END_DATE = #{productEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productNum != null" >
+        PRODUCT_NUM = #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="processNode != null" >
+        PROCESS_NODE = #{processNode,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.WorkOrder" >
+    update work_order
+    set WORK_ORDER_NUM = #{workOrderNum,jdbcType=VARCHAR},
+      WORK_ORDER_DATE = #{workOrderDate,jdbcType=TIMESTAMP},
+      FACTORY_ID = #{factoryId,jdbcType=INTEGER},
+      PRODUCT_MODEL = #{productModel,jdbcType=VARCHAR},
+      PRODUCT_MATERIALS_NUM = #{productMaterialsNum,jdbcType=VARCHAR},
+      PRODUCT_VERSION = #{productVersion,jdbcType=VARCHAR},
+      WORK_FLOW_ID = #{workFlowId,jdbcType=INTEGER},
+      PRODUCT_START_DATE = #{productStartDate,jdbcType=TIMESTAMP},
+      PRODUCT_END_DATE = #{productEndDate,jdbcType=TIMESTAMP},
+      PRODUCT_NUM = #{productNum,jdbcType=INTEGER},
+      PROCESS_NODE = #{processNode,jdbcType=INTEGER},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

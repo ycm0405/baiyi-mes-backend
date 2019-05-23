@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.Product" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PRODUCT_NAME" property="productName" jdbcType="VARCHAR" />
+    <result column="PRODUCT_MODEL" property="productModel" jdbcType="VARCHAR" />
+    <result column="PRODUCT_MATERIALS_NUM" property="productMaterialsNum" jdbcType="VARCHAR" />
+    <result column="PRODUCT_VERSION" property="productVersion" jdbcType="VARCHAR" />
+    <result column="BARCODE_RULE_ID" property="barcodeRuleId" jdbcType="INTEGER" />
+    <result column="PRODUCT_TYPE" property="productType" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PRODUCT_NAME, PRODUCT_MODEL, PRODUCT_MATERIALS_NUM, PRODUCT_VERSION, BARCODE_RULE_ID, 
+    PRODUCT_TYPE, STATUS, CREATE_TIME, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.Product" >
+    insert into product (ID, PRODUCT_NAME, PRODUCT_MODEL, 
+      PRODUCT_MATERIALS_NUM, PRODUCT_VERSION, BARCODE_RULE_ID, 
+      PRODUCT_TYPE, STATUS, CREATE_TIME, 
+      MODIFY_TIME)
+    values (#{id,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{productModel,jdbcType=VARCHAR}, 
+      #{productMaterialsNum,jdbcType=VARCHAR}, #{productVersion,jdbcType=VARCHAR}, #{barcodeRuleId,jdbcType=INTEGER}, 
+      #{productType,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.Product" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="productName != null" >
+        PRODUCT_NAME,
+      </if>
+      <if test="productModel != null" >
+        PRODUCT_MODEL,
+      </if>
+      <if test="productMaterialsNum != null" >
+        PRODUCT_MATERIALS_NUM,
+      </if>
+      <if test="productVersion != null" >
+        PRODUCT_VERSION,
+      </if>
+      <if test="barcodeRuleId != null" >
+        BARCODE_RULE_ID,
+      </if>
+      <if test="productType != null" >
+        PRODUCT_TYPE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productModel != null" >
+        #{productModel,jdbcType=VARCHAR},
+      </if>
+      <if test="productMaterialsNum != null" >
+        #{productMaterialsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="productVersion != null" >
+        #{productVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="barcodeRuleId != null" >
+        #{barcodeRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="productType != null" >
+        #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.Product" >
+    update product
+    <set >
+      <if test="productName != null" >
+        PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productModel != null" >
+        PRODUCT_MODEL = #{productModel,jdbcType=VARCHAR},
+      </if>
+      <if test="productMaterialsNum != null" >
+        PRODUCT_MATERIALS_NUM = #{productMaterialsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="productVersion != null" >
+        PRODUCT_VERSION = #{productVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="barcodeRuleId != null" >
+        BARCODE_RULE_ID = #{barcodeRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="productType != null" >
+        PRODUCT_TYPE = #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.Product" >
+    update product
+    set PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      PRODUCT_MODEL = #{productModel,jdbcType=VARCHAR},
+      PRODUCT_MATERIALS_NUM = #{productMaterialsNum,jdbcType=VARCHAR},
+      PRODUCT_VERSION = #{productVersion,jdbcType=VARCHAR},
+      BARCODE_RULE_ID = #{barcodeRuleId,jdbcType=INTEGER},
+      PRODUCT_TYPE = #{productType,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

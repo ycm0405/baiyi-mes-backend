@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.EmployeeOtherInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.EmployeeOtherInfo" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="MPLOYEE_ID" property="mployeeId" jdbcType="INTEGER" />
+    <result column="JOB_NUM" property="jobNum" jdbcType="VARCHAR" />
+    <result column="FACTORY_ID" property="factoryId" jdbcType="INTEGER" />
+    <result column="DEPARTMENT_ID" property="departmentId" jdbcType="INTEGER" />
+    <result column="JOIN_DATE" property="joinDate" jdbcType="TIMESTAMP" />
+    <result column="JOB_ID" property="jobId" jdbcType="INTEGER" />
+    <result column="JOB_TITLE_ID" property="jobTitleId" jdbcType="INTEGER" />
+    <result column="EDUCATION_LEVEL" property="educationLevel" jdbcType="INTEGER" />
+    <result column="GRADUATE_SCHOOL" property="graduateSchool" jdbcType="VARCHAR" />
+    <result column="WORK_SENIORITY" property="workSeniority" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, MPLOYEE_ID, JOB_NUM, FACTORY_ID, DEPARTMENT_ID, JOIN_DATE, JOB_ID, JOB_TITLE_ID, 
+    EDUCATION_LEVEL, GRADUATE_SCHOOL, WORK_SENIORITY, STATUS, CREATE_TIME, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from employee_other_info
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from employee_other_info
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.EmployeeOtherInfo" >
+    insert into employee_other_info (ID, MPLOYEE_ID, JOB_NUM, 
+      FACTORY_ID, DEPARTMENT_ID, JOIN_DATE, 
+      JOB_ID, JOB_TITLE_ID, EDUCATION_LEVEL, 
+      GRADUATE_SCHOOL, WORK_SENIORITY, STATUS, 
+      CREATE_TIME, MODIFY_TIME)
+    values (#{id,jdbcType=INTEGER}, #{mployeeId,jdbcType=INTEGER}, #{jobNum,jdbcType=VARCHAR}, 
+      #{factoryId,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, #{joinDate,jdbcType=TIMESTAMP}, 
+      #{jobId,jdbcType=INTEGER}, #{jobTitleId,jdbcType=INTEGER}, #{educationLevel,jdbcType=INTEGER}, 
+      #{graduateSchool,jdbcType=VARCHAR}, #{workSeniority,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.EmployeeOtherInfo" >
+    insert into employee_other_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="mployeeId != null" >
+        MPLOYEE_ID,
+      </if>
+      <if test="jobNum != null" >
+        JOB_NUM,
+      </if>
+      <if test="factoryId != null" >
+        FACTORY_ID,
+      </if>
+      <if test="departmentId != null" >
+        DEPARTMENT_ID,
+      </if>
+      <if test="joinDate != null" >
+        JOIN_DATE,
+      </if>
+      <if test="jobId != null" >
+        JOB_ID,
+      </if>
+      <if test="jobTitleId != null" >
+        JOB_TITLE_ID,
+      </if>
+      <if test="educationLevel != null" >
+        EDUCATION_LEVEL,
+      </if>
+      <if test="graduateSchool != null" >
+        GRADUATE_SCHOOL,
+      </if>
+      <if test="workSeniority != null" >
+        WORK_SENIORITY,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mployeeId != null" >
+        #{mployeeId,jdbcType=INTEGER},
+      </if>
+      <if test="jobNum != null" >
+        #{jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="joinDate != null" >
+        #{joinDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jobId != null" >
+        #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="jobTitleId != null" >
+        #{jobTitleId,jdbcType=INTEGER},
+      </if>
+      <if test="educationLevel != null" >
+        #{educationLevel,jdbcType=INTEGER},
+      </if>
+      <if test="graduateSchool != null" >
+        #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="workSeniority != null" >
+        #{workSeniority,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.EmployeeOtherInfo" >
+    update employee_other_info
+    <set >
+      <if test="mployeeId != null" >
+        MPLOYEE_ID = #{mployeeId,jdbcType=INTEGER},
+      </if>
+      <if test="jobNum != null" >
+        JOB_NUM = #{jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryId != null" >
+        FACTORY_ID = #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null" >
+        DEPARTMENT_ID = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="joinDate != null" >
+        JOIN_DATE = #{joinDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jobId != null" >
+        JOB_ID = #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="jobTitleId != null" >
+        JOB_TITLE_ID = #{jobTitleId,jdbcType=INTEGER},
+      </if>
+      <if test="educationLevel != null" >
+        EDUCATION_LEVEL = #{educationLevel,jdbcType=INTEGER},
+      </if>
+      <if test="graduateSchool != null" >
+        GRADUATE_SCHOOL = #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="workSeniority != null" >
+        WORK_SENIORITY = #{workSeniority,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.EmployeeOtherInfo" >
+    update employee_other_info
+    set MPLOYEE_ID = #{mployeeId,jdbcType=INTEGER},
+      JOB_NUM = #{jobNum,jdbcType=VARCHAR},
+      FACTORY_ID = #{factoryId,jdbcType=INTEGER},
+      DEPARTMENT_ID = #{departmentId,jdbcType=INTEGER},
+      JOIN_DATE = #{joinDate,jdbcType=TIMESTAMP},
+      JOB_ID = #{jobId,jdbcType=INTEGER},
+      JOB_TITLE_ID = #{jobTitleId,jdbcType=INTEGER},
+      EDUCATION_LEVEL = #{educationLevel,jdbcType=INTEGER},
+      GRADUATE_SCHOOL = #{graduateSchool,jdbcType=VARCHAR},
+      WORK_SENIORITY = #{workSeniority,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

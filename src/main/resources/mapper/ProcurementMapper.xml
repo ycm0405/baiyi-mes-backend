@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easestrategy.mes.dao.ProcurementMapper" >
+  <resultMap id="BaseResultMap" type="com.easestrategy.mes.entity.Procurement" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="EQUIPMENT_ID" property="equipmentId" jdbcType="INTEGER" />
+    <result column="Emplyoee_ID" property="emplyoeeId" jdbcType="INTEGER" />
+    <result column="SUPPLIER" property="supplier" jdbcType="VARCHAR" />
+    <result column="SUPPLY_ADDRESS" property="supplyAddress" jdbcType="VARCHAR" />
+    <result column="SUPPLIER_LIAISON" property="supplierLiaison" jdbcType="VARCHAR" />
+    <result column="LIAISONS_TEL" property="liaisonsTel" jdbcType="VARCHAR" />
+    <result column="LIAISONS_MAIL" property="liaisonsMail" jdbcType="VARCHAR" />
+    <result column="PURCHASE_PRICE" property="purchasePrice" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, EQUIPMENT_ID, Emplyoee_ID, SUPPLIER, SUPPLY_ADDRESS, SUPPLIER_LIAISON, LIAISONS_TEL, 
+    LIAISONS_MAIL, PURCHASE_PRICE, STATUS, CREATE_TIME, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from procurement
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from procurement
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.easestrategy.mes.entity.Procurement" >
+    insert into procurement (ID, EQUIPMENT_ID, Emplyoee_ID, 
+      SUPPLIER, SUPPLY_ADDRESS, SUPPLIER_LIAISON, 
+      LIAISONS_TEL, LIAISONS_MAIL, PURCHASE_PRICE, 
+      STATUS, CREATE_TIME, MODIFY_TIME
+      )
+    values (#{id,jdbcType=INTEGER}, #{equipmentId,jdbcType=INTEGER}, #{emplyoeeId,jdbcType=INTEGER}, 
+      #{supplier,jdbcType=VARCHAR}, #{supplyAddress,jdbcType=VARCHAR}, #{supplierLiaison,jdbcType=VARCHAR}, 
+      #{liaisonsTel,jdbcType=VARCHAR}, #{liaisonsMail,jdbcType=VARCHAR}, #{purchasePrice,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.easestrategy.mes.entity.Procurement" >
+    insert into procurement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="equipmentId != null" >
+        EQUIPMENT_ID,
+      </if>
+      <if test="emplyoeeId != null" >
+        Emplyoee_ID,
+      </if>
+      <if test="supplier != null" >
+        SUPPLIER,
+      </if>
+      <if test="supplyAddress != null" >
+        SUPPLY_ADDRESS,
+      </if>
+      <if test="supplierLiaison != null" >
+        SUPPLIER_LIAISON,
+      </if>
+      <if test="liaisonsTel != null" >
+        LIAISONS_TEL,
+      </if>
+      <if test="liaisonsMail != null" >
+        LIAISONS_MAIL,
+      </if>
+      <if test="purchasePrice != null" >
+        PURCHASE_PRICE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentId != null" >
+        #{equipmentId,jdbcType=INTEGER},
+      </if>
+      <if test="emplyoeeId != null" >
+        #{emplyoeeId,jdbcType=INTEGER},
+      </if>
+      <if test="supplier != null" >
+        #{supplier,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyAddress != null" >
+        #{supplyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierLiaison != null" >
+        #{supplierLiaison,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonsTel != null" >
+        #{liaisonsTel,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonsMail != null" >
+        #{liaisonsMail,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePrice != null" >
+        #{purchasePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easestrategy.mes.entity.Procurement" >
+    update procurement
+    <set >
+      <if test="equipmentId != null" >
+        EQUIPMENT_ID = #{equipmentId,jdbcType=INTEGER},
+      </if>
+      <if test="emplyoeeId != null" >
+        Emplyoee_ID = #{emplyoeeId,jdbcType=INTEGER},
+      </if>
+      <if test="supplier != null" >
+        SUPPLIER = #{supplier,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyAddress != null" >
+        SUPPLY_ADDRESS = #{supplyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierLiaison != null" >
+        SUPPLIER_LIAISON = #{supplierLiaison,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonsTel != null" >
+        LIAISONS_TEL = #{liaisonsTel,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonsMail != null" >
+        LIAISONS_MAIL = #{liaisonsMail,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePrice != null" >
+        PURCHASE_PRICE = #{purchasePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easestrategy.mes.entity.Procurement" >
+    update procurement
+    set EQUIPMENT_ID = #{equipmentId,jdbcType=INTEGER},
+      Emplyoee_ID = #{emplyoeeId,jdbcType=INTEGER},
+      SUPPLIER = #{supplier,jdbcType=VARCHAR},
+      SUPPLY_ADDRESS = #{supplyAddress,jdbcType=VARCHAR},
+      SUPPLIER_LIAISON = #{supplierLiaison,jdbcType=VARCHAR},
+      LIAISONS_TEL = #{liaisonsTel,jdbcType=VARCHAR},
+      LIAISONS_MAIL = #{liaisonsMail,jdbcType=VARCHAR},
+      PURCHASE_PRICE = #{purchasePrice,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
